@@ -17,6 +17,22 @@ class categorie {
             });
         });
     }
+    static create(nom) { 
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO categories (nom) VALUES (?)', [nom], (err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            });
+        });
+    }
+    static delete(id) {
+        return new Promise((resolve, reject) => {
+            db.query('DELETE FROM categories WHERE id =?', [id], (err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            });
+        });
+    }
 
 }
 
